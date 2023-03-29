@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css">
+    <title>Quiz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
+
+*::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #0000004d;
+    background-color: #e6e7ee;
+  }
+*::-webkit-scrollbar {
+    width: 13px;
+    background-color: #e6e7ee;
+  }
+*::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background: linear-gradient(328deg, rgba(65,82,119,1) 0%, rgba(104,126,173,1) 58%, rgba(65,82,119,1) 100%);
+}
+*{
+    margin: 0%;
+    padding: 0%;
+    text-decoration: none;
+    user-select: none;
+}
+header{
+    position: relative;
+    background: linear-gradient(328deg, rgba(65,82,119,1) 0%, rgba(104,126,173,1) 58%, rgba(65,82,119,1) 100%);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 5px 5px 0 rgb(41 85 115 / 21%);
+}
+.student_detail{
+    display: flex;
+    margin-right: 20px;
+}
+.student_detail .img{
+    height: 55px;
+    width: 55px;
+    background-image: url("/2021114 BLESSING SAM.jpg");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.student_detail h3{
+    margin-right: 10px;
+    text-align: right;
+    font-family: roboto;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+}
+.main-layout{
+    position: relative;
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-layout .main-part{
+    width: 99vw;
+    height: 98%;
+}
+.main-layout .main-part .quiz-title{
+    width: 100%;
+    height: 40px;
+    background-color: #0090A6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.quiz-title .quiz-head{
+    margin-left: 15px;
+}
+.quiz-title .quiz-head h3{
+    font-family: roboto;
+    color: aliceblue;
+}
+.quiz-title .time{
+    margin-right: 5px;
+    width: 140px;
+    background-color: #fff;
+    height: 80%;
+}
+.quiz-title .time h3{
+    font-family: roboto;
+    text-align: center;
+    color: red;
+    line-height: 34px;
+}
+.main-part .quiz-part{
+    box-shadow: 0 0px 12px 0 rgba(43, 43, 43, 0.326);
+    margin-top: 10px;
+    height: calc(98% - 40px);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+.main-part .quiz-part .left{
+    box-shadow: 0 6px 12px 0 rgba(43, 43, 43, 0.459);
+    height: 100%;
+    min-width: 1150px;
+    display: flex;
+}
+.left .que-ans{
+    width: 800px;
+    box-shadow: 0 6px 12px 0 rgba(43, 43, 43, 0.459);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+.que-space{
+    position: relative;
+    height: 370px;
+}
+.ques{
+    width: 100%;
+    height: calc(100% - 35px);
+    overflow-y: auto;
+}
+.ques p{
+    font-family: roboto;
+    margin: 15px;
+    line-height: 22px;
+}
+.workspace{
+    width: calc(100% - 800px);
+    display: flex;
+    flex-direction: column;
+}
+.que-num, .opt-title, .work-head{
+    height: 35px;
+    width: 100%;
+    line-height: 35px;
+    background: linear-gradient(328deg, rgba(65,82,119,1) 0%, rgba(104,126,173,1) 58%, rgba(65,82,119,1) 100%);
+}
+.workplace{
+    margin-top: 10px;
+    height: calc(100%-35px);
+}
+.workplace h4{
+    background: linear-gradient(328deg, rgba(65,82,119,1) 0%, rgba(104,126,173,1) 58%, rgba(65,82,119,1) 100%);
+    line-height: 35px;
+    text-align: center;
+    font-family: roboto;
+    color: #fff;
+}
+.workplace textarea{
+    resize: none;
+    border: none;
+    outline: none;
+    position: relative;
+    padding: 20px;
+    font-family: roboto;
+    font-size: 18px;
+    width: 310px;
+    height: 520px;
+}
+.que-num h4, .opt-title h4{
+    color: #fff;
+    margin-left: 10px;
+    font-family: roboto;
+}
+.main-part .quiz-part .right{
+    margin-left: 20px;
+    min-width: 350px;
+    box-shadow: 0 6px 12px 0 rgba(43, 43, 43, 0.459);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+.main-part .quiz-part .right .quiz-list{
+    width: 100%;
+    height: 470px;
+    box-shadow: 0px 6px 6px 0 rgba(43, 43, 43, 0.158);
+    overflow-y: scroll;
+    /*justify-content: flex-start;
+    flex-direction: column; */
+    /* flex-wrap: wrap; */
+}
+.quiz-list .num{
+    background: linear-gradient(328deg, rgba(65,82,119,1) 0%, rgba(104,126,173,1) 58%, rgba(65,82,119,1) 100%);
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    /* align-items: center;
+    justify-content: center; */
+    margin: 15px 0px 0px 12px;
+    color: #fff;
+    font-family: roboto;
+    box-shadow: 0px 0px 6px 0 rgba(43, 43, 43, 0.158);
+    cursor: pointer;
+    border-radius: 50%;
+}
+.main-part .quiz-part .right .instruction{
+    width: 100%;
+    height: 50px;
+    box-shadow: 10px 0px 12px 0 rgba(43, 43, 43, 0.459);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.inst{
+    display: flex;
+    align-items: center;
+    /* line-height: 40px; */
+    height: 43px;
+}
+.inst .square{
+    width: 15px;
+    height: 15px;
+    background-color: #0090A6;
+    margin-right: 10px;
+}
+.inst p{
+    font-family: roboto;
+}
+.inst .col1{
+    background: linear-gradient(328deg, rgba(65,82,119,1) 0%, rgba(104,126,173,1) 58%, rgba(65,82,119,1) 100%);
+}
+.inst .col2{
+    background-color: #A60000;
+}
+.action{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.buttons{
+    margin-top: 20px;
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+}
+.button{
+    width: 80px;
+    background: #0069A6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: #fff;
+    font-family: roboto;
+    cursor: pointer;
+}
+.flag{
+    background-color: #A60000;
+}
+.submit{
+    font-weight: 600;
+    letter-spacing: .7px;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 40px;
+    width: 70%;
+    background: #1aaa55;
+    height: 40px;
+    color: #fff;
+    font-family: roboto;
+    cursor: pointer;
+}
+input[type=radio] {
+    border: 1px solid black;
+    padding: 0.5em;
+    -webkit-appearance: none;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  input[type=radio]:checked {
+    background: linear-gradient(328deg, rgba(65,82,119,1) 0%, rgba(104,126,173,1) 58%, rgba(65,82,119,1) 100%);
+    background-size: 9px 9px;
+  }
+  
+  input[type=radio]:focus {
+    outline-color: transparent;
+  }
+  #quiz-form{
+      margin: 30px;
+  }
+  #quiz-form p{
+    margin-bottom: 20px;
+    font-family: roboto;
+  }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="student_detail">
+            <h3>Blessing Sam I <br> 2021114</h3>
+            <div class="img">
+                <!-- <img src="/2021114 BLESSING SAM.jpg" alt=""> -->
+            </div>
+        </div>
+    </header>
+    <div class="main-layout">
+        <div class="main-part">
+            <div class="quiz-title">
+                <div class="quiz-head">
+                    <h3>Quiz Name: xxxxxx</h3>
+                </div>
+                <div class="time">
+                    <h3>00 : 01 : 02</h3>
+                </div>
+            </div>
+            <div class="quiz-part">
+                <div class="left">
+                    <div class="que-ans">
+                        <div class="que-space">
+                            <div class="que-num">
+                                <h4>Question No : 01</h4>
+                            </div>
+                            <div class="ques">
+                                <p>_______ is the smallest unit of data in a computer?</p>
+                            </div>
+                        </div>
+                        <div class="ans">
+                            <div class="opt">
+                                <div class="opt-title">
+                                    <h4>Options</h4>
+                                </div>
+                                <form action="" id="quiz-form">
+                                    <p><input type="radio" name="question1" value="byte" id="">Byte</p>
+                                    <p><input type="radio" name="question1" value="byte" id="">Byte</p>
+                                    <p><input type="radio" name="question1" value="byte" id="">Byte</p>
+                                    <p><input type="radio" name="question1" value="byte" id="">Byte</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="workspace">
+                        <div class="work-head"></div>
+                        <div class="workplace">
+                            <h4>Workspace</h4>
+                            <textarea name="" id=""></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="instruction">
+                        <div class="inst">
+                            <div class="square"></div>
+                            <p>Answered</p>
+                        </div>
+                        <div class="inst">
+                            <div class="square col1"></div>
+                            <p>Not Answered</p>
+                        </div>
+                        <div class="inst">
+                            <div class="square col2"></div>
+                            <p>Flag</p>
+                        </div>
+                    </div>
+                    <div class="quiz-list">
+                        <div class="num">
+                            <h3>1</h3>
+                        </div>
+                        <div class="num">
+                            <h3>2</h3>
+                        </div>
+                        <div class="num">
+                            <h3>3</h3>
+                        </div>
+                        <div class="num">
+                            <h3>4</h3>
+                        </div>
+                        <div class="num">
+                            <h3>5</h3>
+                        </div>
+                    </div>    
+                    <div class="action">
+                        <div class="buttons">
+                            <div class="prev button">
+                                Prev
+                            </div>
+                            <div class="flag button">
+                                Flag
+                            </div>
+                            <div class="next button">
+                                Next
+                            </div>
+                        </div>
+                        <div class="submit">
+                            Submit
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
